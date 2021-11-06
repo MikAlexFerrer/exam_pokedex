@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet">
+    <title>PokeDex</title>
+    <style>
+        .ext-container { 
+            margin: auto;
+            height: auto;    
+        }
+        .columns {
+            display: flex;    
+            flex-wrap: wrap;    
+            min-width: 375px;
+        }
+        @media screen and (max-width: 768px) { .clsDes { visibility:collapse; } 
+        .clsmob { visibility:visible; } } 
+        @media screen and (max-width: 768px) { .clsDes { display:none; } .clsmob { 
+         visibility:visible; } }
+    </style>
+</head>
+<body class = "ext-container" style = "margin: 50px;">
+    <div class="nes-container with-title">
+        <header class = "sticky">
+            <div class = "container">
+                <div class = "nav-brand">
+                    <h1 style = "font-size: 40px;">
+                        <a href = "/" class = "nes-pokeball"></a>
+                        PokeDex
+                    </h1>
+                </div>
+            </div>
+        </header>
+   </div>
+    <div class="nes-field">
+        <p></p>
+    </div>
+    <form class="nes-field" method="post" action = "/pokemon">
+        <input type="text" name="pokemon" class="nes-input" autocomplete="off" id="search" placeholder="Search Pokemon...">
+    </form>
+    <div class="nes-field">
+        <p></p>
+    </div>
+    <form class="nes-button" method="post" action = "/before">
+        <button id="previous" type="submit" class="nes-btn"><-</button>
+    </form>
+    <form class="nes-button" method="post" action = "/after" >
+        <button id="after" type="submit" class="nes-btn">-></button>
+    </form>
+    <div class="nes-field">
+        <p></p>
+    </div>
+    <div class = "row">
+        <div class = "nes-container">
+            <div data-img-container class="img-container">
+                <img src="<%= Img %>" class="img" style = "height: 300px; width: auto;">
+            </div>
+            <h2>Name: <%= Name%></h2>
+            <div>ID: <%= ID%></div>
+        </div>
+        <div class="nes-field">
+            <p></p>
+        </div>
+        <div class = "nes-container">
+            <div>Types: </div>
+            <div class="nes-field columns">
+                <% Types.forEach(move => { %>
+                    <div class="nes-table is-bordered is-centered">
+                        <div><%= move %></div>
+                    </div>
+                <% }) %>
+            </div>
+            <div>Experience: <%= Experience%></div>
+            <div>Height: <%= Height%></div>
+            <div>Weight: <%= Weight%></div>
+            <div>Abilities: <%= Abilities%></div>
+        </div>
+        <div class="nes-field">
+            <p></p>
+        </div>
+        <div class="nes-table-responsive nes-container columns">
+            <p>Moves: </p><br/>
+            <% Moves.forEach(move => { %>
+                <div class="nes-table is-bordered is-centered">
+                    <div><%= move %></div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</body>
+</html>
