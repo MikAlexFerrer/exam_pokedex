@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node pokedex.js",
-    "dev": "nodemon pokedex.js"
+    "fight": "nodemon pokedex.js"
   },
   "author": "Miguel Ferrer",
   "license": "ISC",
